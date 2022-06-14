@@ -10,6 +10,15 @@ import type { ApiResult } from './ApiResult';
 import { CancelablePromise } from './CancelablePromise';
 import type { OnCancel } from './CancelablePromise';
 import type { OpenAPIConfig } from './OpenAPI';
+import type { BadGateway } from '../models/BadGateway';
+import type { Forbidden } from '../models/Forbidden';
+import type { InternalServerError } from '../models/InternalServerError';
+import type { NotFound } from '../models/NotFound';
+import type { ServiceUnavailable } from '../models/ServiceUnavailable';
+import type { Unauthorized } from '../models/Unauthorized';
+import type { NetworkUnknownError } from '../models/NetworkUnknownError';
+import type { NetworkError } from '../models/NetworkError';
+import type { BadRequest } from '../models/BadRequest';
 
 {{>functions/isDefined}}
 
@@ -59,8 +68,7 @@ import type { OpenAPIConfig } from './OpenAPI';
 {{>axios/getResponseBody}}
 
 
-{{>functions/catchErrorCodes}}
-
+{{>functions/parseErrorCodes}}
 
 /**
  * Request method
@@ -69,7 +77,7 @@ import type { OpenAPIConfig } from './OpenAPI';
  * @returns CancelablePromise<T>
  * @throws ApiError
  */
-export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): CancelablePromise<T> => {
+export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): CancelablePromise<T | BadGateway | Forbidden | InternalServerError | NotFound | ServiceUnavailable | Unauthorized | NetworkUnknownError | NetworkError | BadRequest> => {
 	return new CancelablePromise(async (resolve, reject, onCancel) => {
 		try {
 			const url = getUrl(config, options);
@@ -78,7 +86,7 @@ export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): C
 			const headers = await getHeaders(config, options, formData);
 
 			if (!onCancel.isCancelled) {
-				const response = await sendRequest<T>(config, options, url, body, formData, headers, onCancel);
+				const response = await sendRequest<T>(config, options, url, body, formData, headers, onCancel, options.axiosOptions);
 				const responseBody = getResponseBody(response);
 				const responseHeader = getResponseHeader(response, options.responseHeader);
 
@@ -90,12 +98,31 @@ export const request = <T>(config: OpenAPIConfig, options: ApiRequestOptions): C
 					body: responseHeader ?? responseBody,
 				};
 
-				catchErrorCodes(options, result);
+				const errorCode = parseErrorCodes(options, result);
 
-				resolve(result.body);
+				if (response.headers['content-type']?.includes('application/json') && (errorCode === 'BAD_REQUEST' || result.ok)) {
+					resolve(result.body);
+				} else {
+					resolve({
+						failure_code: errorCode,
+						failure_message: errorCode,
+					});
+				}
 			}
 		} catch (error) {
-			reject(error);
+			const errorMessage = error instanceof Error ? error.message : error;
+
+			if ((error as AxiosError<unknown>).code === 'ECONNREFUSED') {
+				resolve({
+					failure_code: 'NETWORK_ERROR',
+					failure_message: String(errorMessage),
+				});
+			}
+
+			resolve({
+				failure_code: 'UNKNOWN_ERROR',
+				failure_message: String(errorMessage),
+			});
 		}
 	});
 };

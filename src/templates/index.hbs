@@ -1,5 +1,15 @@
 {{>header}}
 
+import type { BadGateway as ClientGenericBadGateway } from './models/BadGateway';
+import type { Forbidden as ClientGenericForbidden } from './models/Forbidden';
+import type { InternalServerError as ClientGenericInternalServerError } from './models/InternalServerError';
+import type { NotFound as ClientGenericNotFound } from './models/NotFound';
+import type { ServiceUnavailable as ClientGenericServiceUnavailable } from './models/ServiceUnavailable';
+import type { Unauthorized as ClientGenericUnauthorized } from './models/Unauthorized';
+import type { NetworkUnknownError as ClientGenericNetworkUnknownError } from './models/NetworkUnknownError';
+import type { NetworkError as ClientGenericNetworkError } from './models/NetworkError';
+import type { BadRequest as ClientGenericBadRequest } from './models/BadRequest';
+
 {{#if @root.exportClient}}
 export { {{{clientName}}} } from './{{{clientName}}}';
 
@@ -31,6 +41,17 @@ export type { {{{name}}} } from './models/{{{name}}}';
 {{/if}}
 {{#if @root.exportSchemas}}
 {{#if models}}
+
+export type ClientGenericErrors =
+  | ClientGenericBadGateway
+  | ClientGenericForbidden
+  | ClientGenericInternalServerError
+  | ClientGenericNotFound
+  | ClientGenericServiceUnavailable
+  | ClientGenericUnauthorized
+  | ClientGenericNetworkUnknownError
+  | ClientGenericNetworkError
+  | ClientGenericBadRequest
 
 {{#each models}}
 export { ${{{name}}} } from './schemas/${{{name}}}';

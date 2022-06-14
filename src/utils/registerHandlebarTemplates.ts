@@ -17,6 +17,8 @@ import axiosGetResponseBody from '../templates/core/axios/getResponseBody.hbs';
 import axiosGetResponseHeader from '../templates/core/axios/getResponseHeader.hbs';
 import axiosRequest from '../templates/core/axios/request.hbs';
 import axiosSendRequest from '../templates/core/axios/sendRequest.hbs';
+import templateCoreBadGatewayErrorsModel from '../templates/core/BadGateway.hbs';
+import templateCoreBadRequestErrorsModel from '../templates/core/BadRequest.hbs';
 import templateCoreBaseHttpRequest from '../templates/core/BaseHttpRequest.hbs';
 import templateCancelablePromise from '../templates/core/CancelablePromise.hbs';
 import fetchGetHeaders from '../templates/core/fetch/getHeaders.hbs';
@@ -25,6 +27,7 @@ import fetchGetResponseBody from '../templates/core/fetch/getResponseBody.hbs';
 import fetchGetResponseHeader from '../templates/core/fetch/getResponseHeader.hbs';
 import fetchRequest from '../templates/core/fetch/request.hbs';
 import fetchSendRequest from '../templates/core/fetch/sendRequest.hbs';
+import templateCoreForbiddenErrorsModel from '../templates/core/Forbidden.hbs';
 import functionBase64 from '../templates/core/functions/base64.hbs';
 import functionCatchErrorCodes from '../templates/core/functions/catchErrorCodes.hbs';
 import functionGetFormData from '../templates/core/functions/getFormData.hbs';
@@ -36,16 +39,23 @@ import functionIsFormData from '../templates/core/functions/isFormData.hbs';
 import functionIsString from '../templates/core/functions/isString.hbs';
 import functionIsStringWithValue from '../templates/core/functions/isStringWithValue.hbs';
 import functionIsSuccess from '../templates/core/functions/isSuccess.hbs';
+import functionParseErrorCodes from '../templates/core/functions/parseErrorCodes.hbs';
 import functionResolve from '../templates/core/functions/resolve.hbs';
 import templateCoreHttpRequest from '../templates/core/HttpRequest.hbs';
+import templateCoreInternalServerErrorErrorsModel from '../templates/core/InternalServerError.hbs';
+import templateCoreNetworkError from '../templates/core/NetworkError.hbs';
+import templateCoreNetworkUnknownError from '../templates/core/NetworkUnknownError.hbs';
 import nodeGetHeaders from '../templates/core/node/getHeaders.hbs';
 import nodeGetRequestBody from '../templates/core/node/getRequestBody.hbs';
 import nodeGetResponseBody from '../templates/core/node/getResponseBody.hbs';
 import nodeGetResponseHeader from '../templates/core/node/getResponseHeader.hbs';
 import nodeRequest from '../templates/core/node/request.hbs';
 import nodeSendRequest from '../templates/core/node/sendRequest.hbs';
+import templateCoreNotFoundErrorsModel from '../templates/core/NotFound.hbs';
 import templateCoreSettings from '../templates/core/OpenAPI.hbs';
 import templateCoreRequest from '../templates/core/request.hbs';
+import templateCoreServiceUnavailableErrorsModel from '../templates/core/ServiceUnavailable.hbs';
+import templateCoreUnauthorizedErrorsModel from '../templates/core/Unauthorized.hbs';
 import xhrGetHeaders from '../templates/core/xhr/getHeaders.hbs';
 import xhrGetRequestBody from '../templates/core/xhr/getRequestBody.hbs';
 import xhrGetResponseBody from '../templates/core/xhr/getResponseBody.hbs';
@@ -102,6 +112,15 @@ export interface Templates {
         request: Handlebars.TemplateDelegate;
         baseHttpRequest: Handlebars.TemplateDelegate;
         httpRequest: Handlebars.TemplateDelegate;
+        unauthorizedErrorsModel: Handlebars.TemplateDelegate;
+        forbiddenErrorsModel: Handlebars.TemplateDelegate;
+        notFoundErrorsModel: Handlebars.TemplateDelegate;
+        internalServerErrorErrorsModel: Handlebars.TemplateDelegate;
+        badGatewayErrorsModel: Handlebars.TemplateDelegate;
+        serviceUnavailableErrorsModel: Handlebars.TemplateDelegate;
+        networkUnknownErrorModel: Handlebars.TemplateDelegate;
+        networkErrorModel: Handlebars.TemplateDelegate;
+        badRequestErrorModel: Handlebars.TemplateDelegate;
     };
 }
 
@@ -134,6 +153,15 @@ export const registerHandlebarTemplates = (root: {
             request: Handlebars.template(templateCoreRequest),
             baseHttpRequest: Handlebars.template(templateCoreBaseHttpRequest),
             httpRequest: Handlebars.template(templateCoreHttpRequest),
+            unauthorizedErrorsModel: Handlebars.template(templateCoreUnauthorizedErrorsModel),
+            forbiddenErrorsModel: Handlebars.template(templateCoreForbiddenErrorsModel),
+            notFoundErrorsModel: Handlebars.template(templateCoreNotFoundErrorsModel),
+            internalServerErrorErrorsModel: Handlebars.template(templateCoreInternalServerErrorErrorsModel),
+            badGatewayErrorsModel: Handlebars.template(templateCoreBadGatewayErrorsModel),
+            serviceUnavailableErrorsModel: Handlebars.template(templateCoreServiceUnavailableErrorsModel),
+            networkUnknownErrorModel: Handlebars.template(templateCoreNetworkUnknownError),
+            networkErrorModel: Handlebars.template(templateCoreNetworkError),
+            badRequestErrorModel: Handlebars.template(templateCoreBadRequestErrorsModel),
         },
     };
 
@@ -168,6 +196,7 @@ export const registerHandlebarTemplates = (root: {
 
     // Generic functions used in 'request' file @see src/templates/core/request.hbs for more info
     Handlebars.registerPartial('functions/catchErrorCodes', Handlebars.template(functionCatchErrorCodes));
+    Handlebars.registerPartial('functions/parseErrorCodes', Handlebars.template(functionParseErrorCodes));
     Handlebars.registerPartial('functions/getFormData', Handlebars.template(functionGetFormData));
     Handlebars.registerPartial('functions/getQueryString', Handlebars.template(functionGetQueryString));
     Handlebars.registerPartial('functions/getUrl', Handlebars.template(functionGetUrl));

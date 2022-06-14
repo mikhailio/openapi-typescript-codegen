@@ -32,6 +32,8 @@ exports[`v2 should generate: ./test/generated/v2/core/ApiRequestOptions.ts 1`] =
 "/* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { AxiosRequestConfig } from 'axios';
+
 export type ApiRequestOptions = {
     readonly method: 'GET' | 'PUT' | 'POST' | 'DELETE' | 'OPTIONS' | 'HEAD' | 'PATCH';
     readonly url: string;
@@ -543,6 +545,16 @@ exports[`v2 should generate: ./test/generated/v2/index.ts 1`] = `
 "/* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BadGateway as ClientGenericBadGateway } from './models/BadGateway';
+import type { Forbidden as ClientGenericForbidden } from './models/Forbidden';
+import type { InternalServerError as ClientGenericInternalServerError } from './models/InternalServerError';
+import type { NotFound as ClientGenericNotFound } from './models/NotFound';
+import type { ServiceUnavailable as ClientGenericServiceUnavailable } from './models/ServiceUnavailable';
+import type { Unauthorized as ClientGenericUnauthorized } from './models/Unauthorized';
+import type { NetworkUnknownError as ClientGenericNetworkUnknownError } from './models/NetworkUnknownError';
+import type { NetworkError as ClientGenericNetworkError } from './models/NetworkError';
+import type { BadRequest as ClientGenericBadRequest } from './models/BadRequest';
+
 export { ApiError } from './core/ApiError';
 export { CancelablePromise, CancelError } from './core/CancelablePromise';
 export { OpenAPI } from './core/OpenAPI';
@@ -595,6 +607,17 @@ export type { SimpleInteger } from './models/SimpleInteger';
 export type { SimpleReference } from './models/SimpleReference';
 export type { SimpleString } from './models/SimpleString';
 export type { SimpleStringWithPattern } from './models/SimpleStringWithPattern';
+
+export type ClientGenericErrors =
+  | ClientGenericBadGateway
+  | ClientGenericForbidden
+  | ClientGenericInternalServerError
+  | ClientGenericNotFound
+  | ClientGenericServiceUnavailable
+  | ClientGenericUnauthorized
+  | ClientGenericNetworkUnknownError
+  | ClientGenericNetworkError
+  | ClientGenericBadRequest
 
 export { $ArrayWithArray } from './schemas/$ArrayWithArray';
 export { $ArrayWithBooleans } from './schemas/$ArrayWithBooleans';
@@ -739,6 +762,28 @@ exports[`v2 should generate: ./test/generated/v2/models/ArrayWithStrings.ts 1`] 
  * This is a simple array with strings
  */
 export type ArrayWithStrings = Array<string>;
+"
+`;
+
+exports[`v2 should generate: ./test/generated/v2/models/BadGateway.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type BadGateway = {
+    failure_code: 'BAD_GATEWAY',
+    failure_message: string;
+};
+"
+`;
+
+exports[`v2 should generate: ./test/generated/v2/models/BadRequest.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type BadRequest = {
+    failure_code: 'BAD_REQUEST',
+    failure_message: string;
+};
 "
 `;
 
@@ -976,6 +1021,28 @@ export enum EnumWithStrings {
     _SINGLE_QUOTE_ = '\\\\'Single Quote\\\\'',
     _DOUBLE_QUOTES_ = '\\"Double Quotes\\"',
 }
+"
+`;
+
+exports[`v2 should generate: ./test/generated/v2/models/Forbidden.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type Forbidden = {
+    failure_code: 'FORBIDDEN',
+    failure_message: string;
+};
+"
+`;
+
+exports[`v2 should generate: ./test/generated/v2/models/InternalServerError.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type InternalServerError = {
+    failure_code: 'INTERNAL_SERVER_ERROR',
+    failure_message: string;
+};
 "
 `;
 
@@ -1365,6 +1432,50 @@ export type ModelWithString = {
 "
 `;
 
+exports[`v2 should generate: ./test/generated/v2/models/NetworkError.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type NetworkError = {
+    failure_code: 'NETWORK_ERROR',
+    failure_message: string;
+};
+"
+`;
+
+exports[`v2 should generate: ./test/generated/v2/models/NetworkUnknownError.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type NetworkUnknownError = {
+    failure_code: 'UNKNOWN_ERROR',
+    failure_message: string;
+};
+"
+`;
+
+exports[`v2 should generate: ./test/generated/v2/models/NotFound.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type NotFound = {
+    failure_code: 'NOT_FOUND',
+    failure_message: string;
+};
+"
+`;
+
+exports[`v2 should generate: ./test/generated/v2/models/ServiceUnavailable.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type ServiceUnavailable = {
+    failure_code: 'SERVICE_UNAVAILABLE',
+    failure_message: string;
+};
+"
+`;
+
 exports[`v2 should generate: ./test/generated/v2/models/SimpleBoolean.ts 1`] = `
 "/* istanbul ignore file */
 /* tslint:disable */
@@ -1436,6 +1547,17 @@ exports[`v2 should generate: ./test/generated/v2/models/SimpleStringWithPattern.
  * This is a simple string
  */
 export type SimpleStringWithPattern = string;
+"
+`;
+
+exports[`v2 should generate: ./test/generated/v2/models/Unauthorized.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type Unauthorized = {
+    failure_code: 'UNAUTHORIZED',
+    failure_message: string;
+};
 "
 `;
 
@@ -3091,6 +3213,8 @@ exports[`v3 should generate: ./test/generated/v3/core/ApiRequestOptions.ts 1`] =
 "/* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { AxiosRequestConfig } from 'axios';
+
 export type ApiRequestOptions = {
     readonly method: 'GET' | 'PUT' | 'POST' | 'DELETE' | 'OPTIONS' | 'HEAD' | 'PATCH';
     readonly url: string;
@@ -3602,6 +3726,16 @@ exports[`v3 should generate: ./test/generated/v3/index.ts 1`] = `
 "/* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BadGateway as ClientGenericBadGateway } from './models/BadGateway';
+import type { Forbidden as ClientGenericForbidden } from './models/Forbidden';
+import type { InternalServerError as ClientGenericInternalServerError } from './models/InternalServerError';
+import type { NotFound as ClientGenericNotFound } from './models/NotFound';
+import type { ServiceUnavailable as ClientGenericServiceUnavailable } from './models/ServiceUnavailable';
+import type { Unauthorized as ClientGenericUnauthorized } from './models/Unauthorized';
+import type { NetworkUnknownError as ClientGenericNetworkUnknownError } from './models/NetworkUnknownError';
+import type { NetworkError as ClientGenericNetworkError } from './models/NetworkError';
+import type { BadRequest as ClientGenericBadRequest } from './models/BadRequest';
+
 export { ApiError } from './core/ApiError';
 export { CancelablePromise, CancelError } from './core/CancelablePromise';
 export { OpenAPI } from './core/OpenAPI';
@@ -3671,6 +3805,17 @@ export type { SimpleInteger } from './models/SimpleInteger';
 export type { SimpleReference } from './models/SimpleReference';
 export type { SimpleString } from './models/SimpleString';
 export type { SimpleStringWithPattern } from './models/SimpleStringWithPattern';
+
+export type ClientGenericErrors =
+  | ClientGenericBadGateway
+  | ClientGenericForbidden
+  | ClientGenericInternalServerError
+  | ClientGenericNotFound
+  | ClientGenericServiceUnavailable
+  | ClientGenericUnauthorized
+  | ClientGenericNetworkUnknownError
+  | ClientGenericNetworkError
+  | ClientGenericBadRequest
 
 export { $ArrayWithArray } from './schemas/$ArrayWithArray';
 export { $ArrayWithBooleans } from './schemas/$ArrayWithBooleans';
@@ -3837,6 +3982,28 @@ exports[`v3 should generate: ./test/generated/v3/models/ArrayWithStrings.ts 1`] 
  * This is a simple array with strings
  */
 export type ArrayWithStrings = Array<string>;
+"
+`;
+
+exports[`v3 should generate: ./test/generated/v3/models/BadGateway.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type BadGateway = {
+    failure_code: 'BAD_GATEWAY',
+    failure_message: string;
+};
+"
+`;
+
+exports[`v3 should generate: ./test/generated/v3/models/BadRequest.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type BadRequest = {
+    failure_code: 'BAD_REQUEST',
+    failure_message: string;
+};
 "
 `;
 
@@ -4334,6 +4501,28 @@ export type File = {
 "
 `;
 
+exports[`v3 should generate: ./test/generated/v3/models/Forbidden.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type Forbidden = {
+    failure_code: 'FORBIDDEN',
+    failure_message: string;
+};
+"
+`;
+
+exports[`v3 should generate: ./test/generated/v3/models/InternalServerError.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type InternalServerError = {
+    failure_code: 'INTERNAL_SERVER_ERROR',
+    failure_message: string;
+};
+"
+`;
+
 exports[`v3 should generate: ./test/generated/v3/models/ModelCircle.ts 1`] = `
 "/* istanbul ignore file */
 /* tslint:disable */
@@ -4761,6 +4950,39 @@ export type ModelWithString = {
 "
 `;
 
+exports[`v3 should generate: ./test/generated/v3/models/NetworkError.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type NetworkError = {
+    failure_code: 'NETWORK_ERROR',
+    failure_message: string;
+};
+"
+`;
+
+exports[`v3 should generate: ./test/generated/v3/models/NetworkUnknownError.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type NetworkUnknownError = {
+    failure_code: 'UNKNOWN_ERROR',
+    failure_message: string;
+};
+"
+`;
+
+exports[`v3 should generate: ./test/generated/v3/models/NotFound.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type NotFound = {
+    failure_code: 'NOT_FOUND',
+    failure_message: string;
+};
+"
+`;
+
 exports[`v3 should generate: ./test/generated/v3/models/Pageable.ts 1`] = `
 "/* istanbul ignore file */
 /* tslint:disable */
@@ -4772,6 +4994,17 @@ export type Pageable = {
     sort?: Array<string>;
 };
 
+"
+`;
+
+exports[`v3 should generate: ./test/generated/v3/models/ServiceUnavailable.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type ServiceUnavailable = {
+    failure_code: 'SERVICE_UNAVAILABLE',
+    failure_message: string;
+};
 "
 `;
 
@@ -4846,6 +5079,17 @@ exports[`v3 should generate: ./test/generated/v3/models/SimpleStringWithPattern.
  * This is a simple string
  */
 export type SimpleStringWithPattern = string | null;
+"
+`;
+
+exports[`v3 should generate: ./test/generated/v3/models/Unauthorized.ts 1`] = `
+"/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+export type Unauthorized = {
+    failure_code: 'UNAUTHORIZED',
+    failure_message: string;
+};
 "
 `;
 
@@ -6161,10 +6405,19 @@ exports[`v3 should generate: ./test/generated/v3/services/ComplexService.ts 1`] 
 "/* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BadGateway } from '../models/BadGateway';
+import type { BadRequest } from '../models/BadRequest';
+import type { Forbidden } from '../models/Forbidden';
+import type { InternalServerError } from '../models/InternalServerError';
 import type { ModelWithArray } from '../models/ModelWithArray';
 import type { ModelWithDictionary } from '../models/ModelWithDictionary';
 import type { ModelWithEnum } from '../models/ModelWithEnum';
 import type { ModelWithString } from '../models/ModelWithString';
+import type { NetworkError } from '../models/NetworkError';
+import type { NetworkUnknownError } from '../models/NetworkUnknownError';
+import type { NotFound } from '../models/NotFound';
+import type { ServiceUnavailable } from '../models/ServiceUnavailable';
+import type { Unauthorized } from '../models/Unauthorized';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
@@ -6176,6 +6429,16 @@ export class ComplexService {
      * @param parameterObject Parameter containing object
      * @param parameterReference Parameter containing reference
      * @returns ModelWithString Successful response
+     * @returns NetworkUnknownError
+     * @returns NetworkError
+     * @returns BadRequest
+     * @returns Unauthorized
+     * @returns Forbidden
+     * @returns NotFound
+     * @returns InternalServerError
+     * @returns BadGateway
+     * @returns ServiceUnavailable
+     * @returns any 400 server error
      * @throws ApiError
      */
     public static complexTypes(
@@ -6187,7 +6450,7 @@ export class ComplexService {
             };
         },
         parameterReference: ModelWithString,
-    ): CancelablePromise<Array<ModelWithString>> {
+    ): CancelablePromise<Array<ModelWithString> | NetworkUnknownError | NetworkError | BadRequest | Unauthorized | Forbidden | NotFound | InternalServerError | BadGateway | ServiceUnavailable | any> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/v{api-version}/complex',
@@ -6206,6 +6469,15 @@ export class ComplexService {
      * @param id
      * @param requestBody
      * @returns ModelWithString Success
+     * @returns NetworkUnknownError
+     * @returns NetworkError
+     * @returns BadRequest
+     * @returns Unauthorized
+     * @returns Forbidden
+     * @returns NotFound
+     * @returns InternalServerError
+     * @returns BadGateway
+     * @returns ServiceUnavailable
      * @throws ApiError
      */
     public static complexParams(
@@ -6223,7 +6495,7 @@ export class ComplexService {
                 readonly name?: string | null;
             };
         },
-    ): CancelablePromise<ModelWithString> {
+    ): CancelablePromise<ModelWithString | NetworkUnknownError | NetworkError | BadRequest | Unauthorized | Forbidden | NotFound | InternalServerError | BadGateway | ServiceUnavailable> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/api/v{api-version}/complex/{id}',
@@ -6515,6 +6787,16 @@ exports[`v3 should generate: ./test/generated/v3/services/ErrorService.ts 1`] = 
 "/* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BadGateway } from '../models/BadGateway';
+import type { BadRequest } from '../models/BadRequest';
+import type { Forbidden } from '../models/Forbidden';
+import type { InternalServerError } from '../models/InternalServerError';
+import type { NetworkError } from '../models/NetworkError';
+import type { NetworkUnknownError } from '../models/NetworkUnknownError';
+import type { NotFound } from '../models/NotFound';
+import type { ServiceUnavailable } from '../models/ServiceUnavailable';
+import type { Unauthorized } from '../models/Unauthorized';
+
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
@@ -6524,11 +6806,20 @@ export class ErrorService {
     /**
      * @param status Status code to return
      * @returns any Custom message: Successful response
+     * @returns NetworkUnknownError
+     * @returns NetworkError
+     * @returns BadRequest
+     * @returns Unauthorized
+     * @returns Forbidden
+     * @returns NotFound
+     * @returns InternalServerError
+     * @returns BadGateway
+     * @returns ServiceUnavailable
      * @throws ApiError
      */
     public static testErrorCode(
         status: number,
-    ): CancelablePromise<any> {
+    ): CancelablePromise<any | NetworkUnknownError | NetworkError | BadRequest | Unauthorized | Forbidden | NotFound | InternalServerError | BadGateway | ServiceUnavailable> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/api/v{api-version}/error',
@@ -6588,6 +6879,16 @@ exports[`v3 should generate: ./test/generated/v3/services/HeaderService.ts 1`] =
 "/* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BadGateway } from '../models/BadGateway';
+import type { BadRequest } from '../models/BadRequest';
+import type { Forbidden } from '../models/Forbidden';
+import type { InternalServerError } from '../models/InternalServerError';
+import type { NetworkError } from '../models/NetworkError';
+import type { NetworkUnknownError } from '../models/NetworkUnknownError';
+import type { NotFound } from '../models/NotFound';
+import type { ServiceUnavailable } from '../models/ServiceUnavailable';
+import type { Unauthorized } from '../models/Unauthorized';
+
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
@@ -6596,9 +6897,19 @@ export class HeaderService {
 
     /**
      * @returns string Successful response
+     * @returns NetworkUnknownError
+     * @returns NetworkError
+     * @returns BadRequest
+     * @returns Unauthorized
+     * @returns Forbidden
+     * @returns NotFound
+     * @returns InternalServerError
+     * @returns BadGateway
+     * @returns ServiceUnavailable
+     * @returns any 400 server error
      * @throws ApiError
      */
-    public static callWithResultFromHeader(): CancelablePromise<string> {
+    public static callWithResultFromHeader(): CancelablePromise<string | NetworkUnknownError | NetworkError | BadRequest | Unauthorized | Forbidden | NotFound | InternalServerError | BadGateway | ServiceUnavailable | any> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/api/v{api-version}/header',
@@ -6618,7 +6929,16 @@ exports[`v3 should generate: ./test/generated/v3/services/MultipartService.ts 1`
 "/* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BadGateway } from '../models/BadGateway';
+import type { BadRequest } from '../models/BadRequest';
+import type { Forbidden } from '../models/Forbidden';
+import type { InternalServerError } from '../models/InternalServerError';
 import type { ModelWithString } from '../models/ModelWithString';
+import type { NetworkError } from '../models/NetworkError';
+import type { NetworkUnknownError } from '../models/NetworkUnknownError';
+import type { NotFound } from '../models/NotFound';
+import type { ServiceUnavailable } from '../models/ServiceUnavailable';
+import type { Unauthorized } from '../models/Unauthorized';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
@@ -6646,6 +6966,15 @@ export class MultipartService {
 
     /**
      * @returns any OK
+     * @returns NetworkUnknownError
+     * @returns NetworkError
+     * @returns BadRequest
+     * @returns Unauthorized
+     * @returns Forbidden
+     * @returns NotFound
+     * @returns InternalServerError
+     * @returns BadGateway
+     * @returns ServiceUnavailable
      * @throws ApiError
      */
     public static multipartResponse(): CancelablePromise<{
@@ -6654,7 +6983,7 @@ export class MultipartService {
             foo?: string;
             bar?: string;
         };
-    }> {
+    } | NetworkUnknownError | NetworkError | BadRequest | Unauthorized | Forbidden | NotFound | InternalServerError | BadGateway | ServiceUnavailable> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/v{api-version}/multipart',
@@ -6973,9 +7302,18 @@ exports[`v3 should generate: ./test/generated/v3/services/ResponseService.ts 1`]
 "/* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BadGateway } from '../models/BadGateway';
+import type { BadRequest } from '../models/BadRequest';
+import type { Forbidden } from '../models/Forbidden';
+import type { InternalServerError } from '../models/InternalServerError';
 import type { ModelThatExtends } from '../models/ModelThatExtends';
 import type { ModelThatExtendsExtends } from '../models/ModelThatExtendsExtends';
 import type { ModelWithString } from '../models/ModelWithString';
+import type { NetworkError } from '../models/NetworkError';
+import type { NetworkUnknownError } from '../models/NetworkUnknownError';
+import type { NotFound } from '../models/NotFound';
+import type { ServiceUnavailable } from '../models/ServiceUnavailable';
+import type { Unauthorized } from '../models/Unauthorized';
 
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
@@ -6985,9 +7323,18 @@ export class ResponseService {
 
     /**
      * @returns ModelWithString
+     * @returns NetworkUnknownError
+     * @returns NetworkError
+     * @returns BadRequest
+     * @returns Unauthorized
+     * @returns Forbidden
+     * @returns NotFound
+     * @returns InternalServerError
+     * @returns BadGateway
+     * @returns ServiceUnavailable
      * @throws ApiError
      */
-    public static callWithResponse(): CancelablePromise<ModelWithString> {
+    public static callWithResponse(): CancelablePromise<ModelWithString | NetworkUnknownError | NetworkError | BadRequest | Unauthorized | Forbidden | NotFound | InternalServerError | BadGateway | ServiceUnavailable> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/v{api-version}/response',
@@ -6996,9 +7343,18 @@ export class ResponseService {
 
     /**
      * @returns ModelWithString Message for default response
+     * @returns NetworkUnknownError
+     * @returns NetworkError
+     * @returns BadRequest
+     * @returns Unauthorized
+     * @returns Forbidden
+     * @returns NotFound
+     * @returns InternalServerError
+     * @returns BadGateway
+     * @returns ServiceUnavailable
      * @throws ApiError
      */
-    public static callWithDuplicateResponses(): CancelablePromise<ModelWithString> {
+    public static callWithDuplicateResponses(): CancelablePromise<ModelWithString | NetworkUnknownError | NetworkError | BadRequest | Unauthorized | Forbidden | NotFound | InternalServerError | BadGateway | ServiceUnavailable> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/api/v{api-version}/response',
@@ -7012,6 +7368,15 @@ export class ResponseService {
 
     /**
      * @returns any Message for 200 response
+     * @returns NetworkUnknownError
+     * @returns NetworkError
+     * @returns BadRequest
+     * @returns Unauthorized
+     * @returns Forbidden
+     * @returns NotFound
+     * @returns InternalServerError
+     * @returns BadGateway
+     * @returns ServiceUnavailable
      * @returns ModelWithString Message for default response
      * @returns ModelThatExtends Message for 201 response
      * @returns ModelThatExtendsExtends Message for 202 response
@@ -7021,7 +7386,7 @@ export class ResponseService {
         readonly '@namespace.string'?: string;
         readonly '@namespace.integer'?: number;
         readonly value?: Array<ModelWithString>;
-    } | ModelWithString | ModelThatExtends | ModelThatExtendsExtends> {
+    } | NetworkUnknownError | NetworkError | BadRequest | Unauthorized | Forbidden | NotFound | InternalServerError | BadGateway | ServiceUnavailable | ModelWithString | ModelThatExtends | ModelThatExtendsExtends> {
         return __request(OpenAPI, {
             method: 'PUT',
             url: '/api/v{api-version}/response',
@@ -7125,6 +7490,16 @@ exports[`v3 should generate: ./test/generated/v3/services/TypesService.ts 1`] = 
 "/* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BadGateway } from '../models/BadGateway';
+import type { BadRequest } from '../models/BadRequest';
+import type { Forbidden } from '../models/Forbidden';
+import type { InternalServerError } from '../models/InternalServerError';
+import type { NetworkError } from '../models/NetworkError';
+import type { NetworkUnknownError } from '../models/NetworkUnknownError';
+import type { NotFound } from '../models/NotFound';
+import type { ServiceUnavailable } from '../models/ServiceUnavailable';
+import type { Unauthorized } from '../models/Unauthorized';
+
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
@@ -7141,6 +7516,15 @@ export class TypesService {
      * @param parameterObject This is an object parameter
      * @param id This is a number parameter
      * @returns number Response is a simple number
+     * @returns NetworkUnknownError
+     * @returns NetworkError
+     * @returns BadRequest
+     * @returns Unauthorized
+     * @returns Forbidden
+     * @returns NotFound
+     * @returns InternalServerError
+     * @returns BadGateway
+     * @returns ServiceUnavailable
      * @returns string Response is a simple string
      * @returns boolean Response is a simple boolean
      * @returns any Response is a simple object
@@ -7155,7 +7539,7 @@ export class TypesService {
         parameterBoolean: boolean | null = true,
         parameterObject: any = null,
         id?: number,
-    ): CancelablePromise<number | string | boolean | any> {
+    ): CancelablePromise<number | NetworkUnknownError | NetworkError | BadRequest | Unauthorized | Forbidden | NotFound | InternalServerError | BadGateway | ServiceUnavailable | string | boolean | any> {
         return __request(OpenAPI, {
             method: 'GET',
             url: '/api/v{api-version}/types',
@@ -7182,6 +7566,16 @@ exports[`v3 should generate: ./test/generated/v3/services/UploadService.ts 1`] =
 "/* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BadGateway } from '../models/BadGateway';
+import type { BadRequest } from '../models/BadRequest';
+import type { Forbidden } from '../models/Forbidden';
+import type { InternalServerError } from '../models/InternalServerError';
+import type { NetworkError } from '../models/NetworkError';
+import type { NetworkUnknownError } from '../models/NetworkUnknownError';
+import type { NotFound } from '../models/NotFound';
+import type { ServiceUnavailable } from '../models/ServiceUnavailable';
+import type { Unauthorized } from '../models/Unauthorized';
+
 import type { CancelablePromise } from '../core/CancelablePromise';
 import { OpenAPI } from '../core/OpenAPI';
 import { request as __request } from '../core/request';
@@ -7191,11 +7585,20 @@ export class UploadService {
     /**
      * @param file Supply a file reference for upload
      * @returns boolean
+     * @returns NetworkUnknownError
+     * @returns NetworkError
+     * @returns BadRequest
+     * @returns Unauthorized
+     * @returns Forbidden
+     * @returns NotFound
+     * @returns InternalServerError
+     * @returns BadGateway
+     * @returns ServiceUnavailable
      * @throws ApiError
      */
     public static uploadFile(
         file: Blob,
-    ): CancelablePromise<boolean> {
+    ): CancelablePromise<boolean | NetworkUnknownError | NetworkError | BadRequest | Unauthorized | Forbidden | NotFound | InternalServerError | BadGateway | ServiceUnavailable> {
         return __request(OpenAPI, {
             method: 'POST',
             url: '/api/v{api-version}/upload',

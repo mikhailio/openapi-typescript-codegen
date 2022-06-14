@@ -33,6 +33,15 @@ describe('writeClient', () => {
                 request: () => 'request',
                 baseHttpRequest: () => 'baseHttpRequest',
                 httpRequest: () => 'httpRequest',
+                unauthorizedErrorsModel: () => 'unauthorizedErrorsModel',
+                forbiddenErrorsModel: () => 'forbiddenErrorsModel',
+                notFoundErrorsModel: () => 'notFoundErrorsModel',
+                internalServerErrorErrorsModel: () => 'internalServerErrorErrorsModel',
+                badGatewayErrorsModel: () => 'badGatewayErrorsModel',
+                serviceUnavailableErrorsModel: () => 'serviceUnavailableErrorsModel',
+                networkUnknownErrorModel: () => 'networkUnknownErrorModel',
+                networkErrorModel: () => 'networkErrorModel',
+                badRequestErrorModel: () => 'badRequestErrorModel',
             },
         };
 

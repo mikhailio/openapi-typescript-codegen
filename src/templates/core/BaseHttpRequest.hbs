@@ -10,6 +10,15 @@ import type { OpenAPIConfig } from './OpenAPI';
 import type { ApiRequestOptions } from './ApiRequestOptions';
 import type { CancelablePromise } from './CancelablePromise';
 import type { OpenAPIConfig } from './OpenAPI';
+import type { BadGateway } from '../models/BadGateway';
+import type { Forbidden } from '../models/Forbidden';
+import type { InternalServerError } from '../models/InternalServerError';
+import type { NotFound } from '../models/NotFound';
+import type { ServiceUnavailable } from '../models/ServiceUnavailable';
+import type { Unauthorized } from '../models/Unauthorized';
+import type { NetworkUnknownError } from '../models/NetworkUnknownError';
+import type { NetworkError } from '../models/NetworkError';
+import type { BadRequest } from '../models/BadRequest';
 {{/equals}}
 
 export abstract class BaseHttpRequest {
@@ -26,6 +35,6 @@ export abstract class BaseHttpRequest {
 	{{#equals @root.httpClient 'angular'}}
 	public abstract request<T>(options: ApiRequestOptions): Observable<T>;
 	{{else}}
-	public abstract request<T>(options: ApiRequestOptions): CancelablePromise<T>;
+	public abstract request<T>(options: ApiRequestOptions): CancelablePromise<T | BadGateway | Forbidden | InternalServerError | NotFound | ServiceUnavailable | Unauthorized | NetworkUnknownError | NetworkError | BadRequest>;
 	{{/equals}}
 }

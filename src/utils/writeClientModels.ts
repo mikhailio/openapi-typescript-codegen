@@ -34,4 +34,103 @@ export const writeClientModels = async (
         });
         await writeFile(file, i(f(templateResult), indent));
     }
+
+    await writeFile(
+        resolve(outputPath, 'Unauthorized.ts'),
+        i(
+            templates.core.unauthorizedErrorsModel({
+                httpClient,
+                useUnionTypes,
+            }),
+            indent
+        )
+    );
+
+    await writeFile(
+        resolve(outputPath, 'Forbidden.ts'),
+        i(
+            templates.core.forbiddenErrorsModel({
+                httpClient,
+                useUnionTypes,
+            }),
+            indent
+        )
+    );
+
+    await writeFile(
+        resolve(outputPath, 'NotFound.ts'),
+        i(
+            templates.core.notFoundErrorsModel({
+                httpClient,
+                useUnionTypes,
+            }),
+            indent
+        )
+    );
+
+    await writeFile(
+        resolve(outputPath, 'InternalServerError.ts'),
+        i(
+            templates.core.internalServerErrorErrorsModel({
+                httpClient,
+                useUnionTypes,
+            }),
+            indent
+        )
+    );
+
+    await writeFile(
+        resolve(outputPath, 'BadGateway.ts'),
+        i(
+            templates.core.badGatewayErrorsModel({
+                httpClient,
+                useUnionTypes,
+            }),
+            indent
+        )
+    );
+
+    await writeFile(
+        resolve(outputPath, 'ServiceUnavailable.ts'),
+        i(
+            templates.core.serviceUnavailableErrorsModel({
+                httpClient,
+                useUnionTypes,
+            }),
+            indent
+        )
+    );
+
+    await writeFile(
+        resolve(outputPath, 'NetworkUnknownError.ts'),
+        i(
+            templates.core.networkUnknownErrorModel({
+                httpClient,
+                useUnionTypes,
+            }),
+            indent
+        )
+    );
+
+    await writeFile(
+        resolve(outputPath, 'NetworkError.ts'),
+        i(
+            templates.core.networkErrorModel({
+                httpClient,
+                useUnionTypes,
+            }),
+            indent
+        )
+    );
+
+    await writeFile(
+        resolve(outputPath, 'BadRequest.ts'),
+        i(
+            templates.core.badRequestErrorModel({
+                httpClient,
+                useUnionTypes,
+            }),
+            indent
+        )
+    );
 };
